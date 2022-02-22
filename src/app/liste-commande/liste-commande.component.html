@@ -1,0 +1,147 @@
+<!-- <div *ngFor="let commande of commandes">
+ <div class=" border mb-3">
+   <span>N°Commande: </span> {{commande.numCommande}} <br>
+   <span>Libelle: </span> {{commande.libelle}} <br>
+   <span>Montant: </span> {{commande.montantTotal}} <br>
+   <hr>
+   <span>Entrepise:  </span> {{commande.entreprise.name}} <br>
+   <span>Adresse:  </span> {{commande.entreprise.adresse}} <br>
+
+   <span> Contact Name: {{commande.entreprise.contactName.fullName}}</span> <br>
+   <span> Email du Contact: {{commande.entreprise.contactName.email}}</span> <br>
+
+     <div *ngFor="let telephone of commande.entreprise.contactName.telephones ;let indexOfelement=index;">
+       Telephone {{indexOfelement+1}}: {{telephone.telephoneNumber}}
+    </div>
+
+
+   <span *ngIf="commande.ficheInterventions.length > 0" class="text-info">Liste des Fiches d'interventions</span>
+
+   <small class="text-muted" *ngIf="commande.ficheInterventions.length == 0">Aucune Fiche d'intervention pour cette commande</small>
+  <table class="table" *ngIf="commande.ficheInterventions.length > 0">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">Id</th>
+        <th scope="col">date de création</th>
+        <th scope="col">Descripton</th>
+        <th scope="col">Statut F.I</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let fi of commande.ficheInterventions">
+      <tr>
+        <th scope="row">{{fi.id}}</th>
+        <td>{{fi.dateCreation}}</td>
+        <td>{{fi.description}}</td>
+        <td>{{fi.statusFicheIntervention.labelle}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <span *ngIf="commande.commandePersonnels.length > 0" class="text-warning">Personnel(s) ayant droits</span>
+  <small class="text-muted" *ngIf="commande.commandePersonnels.length == 0">Aucun utilisateur n'est affecté à ce perimetre</small>
+<table class="table table-striped" *ngIf="commande.commandePersonnels.length > 0" >
+  <thead  class="table-dark">
+    <tr >
+      <th scope="col">Id</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Rôle</th>
+      <th scope="col">Statut du rôle</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let commandePersonnels of commande.commandePersonnels">
+    <tr>
+      <th scope="row">{{commandePersonnels.personnel.id}}</th>
+      <th scope="row">{{commandePersonnels.personnel.name}}</th>
+      <th scope="row">{{commandePersonnels.role.labelle}}</th>
+      <th scope="row" *ngIf="commandePersonnels.role.isActive"> Actif </th>
+      <th scope="row" *ngIf="commandePersonnels.role.isActive==false"> InActif </th>
+    </tr>
+  </tbody>
+</table>
+<hr>
+ </div>
+</div>
+ -->
+
+  <span>Liste des commandes</span>
+  <div class="accordion" id="accordionExample">
+
+    <div class="accordion-item" *ngFor="let commande of commandes; let i = index">
+      <h2 class="accordion-header" [id]="'heading'+i">
+
+        <button class="accordion-button" [ngClass]="{ 'collapsed': i != 0 }" type="button" data-bs-toggle="collapse"
+          [attr.data-bs-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+          <p>
+          <span class="mr-2 ">N°Commande: </span> <span>{{commande.numCommande}}</span> <br>
+          <span class="mr-2 ">Titre: </span> <span>{{commande.libelle}}</span> <br>
+          <span class="mr-2 ">Montant Total: </span> <span>{{commande.montantTotal}}</span>
+        </p>
+        </button>
+      </h2>
+      <div [id]="'collapse'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
+        [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <span>Entrepise: </span> {{commande.entreprise.name}} <br>
+            <span>Adresse: </span> {{commande.entreprise.adresse}} <br>
+
+            <span> Contact Name: {{commande.entreprise.contactName.fullName}}</span> <br>
+            <span> Email du Contact: {{commande.entreprise.contactName.email}}</span> <br>
+
+            <div *ngFor="let telephone of commande.entreprise.contactName.telephones ;let indexOfelement=index;">
+              Telephone {{indexOfelement+1}}: {{telephone.telephoneNumber}}
+            </div>
+
+
+            <span *ngIf="commande.ficheInterventions.length > 0" class="text-info">Liste des Fiches d'interventions</span>
+
+            <small class="text-muted" *ngIf="commande.ficheInterventions.length == 0">Aucune Fiche d'intervention pour cette
+              commande</small>
+            <table class="table" *ngIf="commande.ficheInterventions.length > 0">
+              <thead>
+                <tr class="table-dark">
+                  <th scope="col">Id</th>
+                  <th scope="col">date de création</th>
+                  <th scope="col">Descripton</th>
+                  <th scope="col">Statut F.I</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let fi of commande.ficheInterventions">
+                <tr>
+                  <th scope="row">{{fi.id}}</th>
+                  <td>{{fi.dateCreation}}</td>
+                  <td>{{fi.description}}</td>
+                  <td>{{fi.statusFicheIntervention.labelle}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <hr>
+            <span *ngIf="commande.commandePersonnels.length > 0" class="text-warning">Personnel(s) ayant droits</span>
+            <small class="text-muted" *ngIf="commande.commandePersonnels.length == 0">Aucun utilisateur n'est affecté à ce
+              perimetre</small>
+            <table class="table table-striped" *ngIf="commande.commandePersonnels.length > 0">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Rôle</th>
+                  <th scope="col">Statut du rôle</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let commandePersonnels of commande.commandePersonnels">
+                <tr>
+                  <th scope="row">{{commandePersonnels.personnel.id}}</th>
+                  <th scope="row">{{commandePersonnels.personnel.name}}</th>
+                  <th scope="row">{{commandePersonnels.role.labelle}}</th>
+                  <th scope="row" *ngIf="commandePersonnels.role.isActive"> Actif </th>
+                  <th scope="row" *ngIf="commandePersonnels.role.isActive==false"> InActif </th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
