@@ -1,6 +1,15 @@
 import { gql } from 'apollo-angular';
 
-export const   GET_COMMANDES = gql`
+export const   _GET_ENTREPRISES = gql`
+ query{
+  entreprises{
+    id
+    name
+    adresse
+  }
+}
+`;
+export const   _GET_COMMANDES = gql`
   query {
     commandes {
       numCommande

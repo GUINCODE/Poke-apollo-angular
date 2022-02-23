@@ -1,8 +1,8 @@
 import { CommadeService } from './../services/commade.service';
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
-import { Apollo, gql } from "apollo-angular";
-import { GET_COMMANDES } from "../services/queries";
+
+
 @Component({
   selector: "app-liste-commande",
   templateUrl: "./liste-commande.component.html",
@@ -27,19 +27,22 @@ export class ListeCommandeComponent implements OnInit, OnDestroy {
       this.querySubscription =  this.commandeService.getCommandes().valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;
         this.commandes = data.commandes;
-        // console.log(this.commandes);
-        console.log(loading);
+        // // console.log(this.commandes);
+        //  // console.log(loading);
       });
    }
-  //  getCommandes() {
-  //     this.querySubscription = this.apollo
-  //     .watchQuery<any>({
-  //       query: GET_COMMANDES,
-  //     })
-  //     .valueChanges.subscribe(({ data, loading }) => {
-  //       this.loading = loading;
-  //       this.commandes = data.commandes;
-  //       console.log(this.commandes);
-  //     });
-  //  }
+
+
+
+  // //  getCommandes() {
+  // //   this.querySubscription = this.apollo
+  // //     .watchQuery<any>({
+  // //       query: GET_COMMANDES,
+  // //     })
+  // //     .valueChanges.subscribe(({ data, loading }) => {
+  // //       this.loading = loading;
+  // //       this.commandes = data.commandes;
+  // //       console.log(this.commandes);
+  ////  });
+  // //  }
 }

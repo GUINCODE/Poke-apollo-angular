@@ -7,20 +7,39 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ListeCommandeComponent } from './liste-commande/liste-commande.component';
 import { AddCommandeComponent } from './add-commande/add-commande.component';
+import { WellcomeComponent } from './wellcome/wellcome.component';
+import { FormsModule } from '@angular/forms';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { fr_FR } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import fr from '@angular/common/locales/fr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NzDragService } from 'ng-zorro-antd/core/services';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+
+registerLocaleData(fr);
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ListeCommandeComponent,
-    AddCommandeComponent
+    AddCommandeComponent,
+    WellcomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    NzNotificationModule
+
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

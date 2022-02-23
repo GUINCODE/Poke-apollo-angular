@@ -1,1 +1,31 @@
-<p>add-commande works!</p>
+<div class=" ContentFOrm ">
+<div class="formulaireDiv ">
+<form   #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="mb-3 col-12">
+    <label for="Libelle" class="form-label">Libelle</label>
+    <input type="text" class="form-control" id="Libelle" name="Libelle" [(ngModel)]="_commande.libelle" required>
+  </div>
+  <div class="mb-3 col-6">
+    <label for="montantTotal" class="form-label">Montant Total</label>
+    <div class="d-flex align-items-center justify-content-evenly">
+        <input type="number" class="form-control" id="montantTotal" name="montantTotal" [(ngModel)]="_commande.montantTotal"
+          required>
+        <span class="">€</span>
+    </div>
+  </div>
+  <div class="mb-3 col-8">
+    <label for="numCommande" class="form-label">Numéro commande</label>
+    <input type="text" class="form-control" id="numCommande" name="numCommande" [(ngModel)]="_commande.numCommande"  required >
+  </div>
+  <div class="mb-3 col-12">
+    <label for="entreprise" class="form-label">Entreprise</label>
+    <select class="form-select" aria-label="Default select example" id="entreprise" name="entreprise" [(ngModel)]="_commande.entrepriseId" required>
+   <option [ngValue]=0 disabled selected>Select Entreprise</option>
+   <option *ngFor="let entreprise of entreprises" [ngValue]="entreprise.id">{{entreprise.name}}</option>
+    </select>
+  </div>
+
+<button class="btn btn-primary mb-3" type="submit" [disabled]="f.form.invalid || _commande.entrepriseId == 0">Save</button>
+</form>
+</div>
+</div>
