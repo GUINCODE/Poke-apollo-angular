@@ -1,7 +1,7 @@
-import { _CREATE_COMMAND } from './../queries/Mutation';
+import { _CREATE_COMMAND } from '../graphql/Mutation';
 import { Apollo } from 'apollo-angular';
 import { Injectable } from '@angular/core';
-import {  _GET_COMMANDES } from '../queries/Query';
+import {  _GET_COMMANDES } from '../graphql/Query';
 import { Commande } from '../types/commandeType';
 
 @Injectable({

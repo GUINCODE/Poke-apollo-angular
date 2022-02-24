@@ -1,6 +1,6 @@
 import { Apollo } from 'apollo-angular';
 import { Injectable } from '@angular/core';
-import { _GET_ENTREPRISES } from '../queries/Query';
+import { _GET_ENTREPRISES } from '../graphql/Query';
 
 @Injectable({
   providedIn: 'root'
