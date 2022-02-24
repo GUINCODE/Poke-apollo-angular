@@ -1,8 +1,8 @@
 import { Subscription } from 'rxjs';
-import { Entreprise } from './../types/entrepriseType';
-import { EntrepriseService } from './../services/entreprise.service';
-import { Commande } from './../types/commandeType';
-import { CommadeService } from "./../services/commade.service";
+import { Entreprise } from '../../types/entrepriseType';
+import { EntrepriseService } from '../../services/entreprise.service';
+import { Commande } from '../../types/commandeType';
+import { CommadeService } from "../../services/commade.service";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from '@angular/forms';
 import { NzNotificationService } from 'ng-zorro-antd/notification';

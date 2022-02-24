@@ -1,6 +1,6 @@
-import { WellcomeComponent } from './wellcome/wellcome.component';
-import { ListeCommandeComponent } from './liste-commande/liste-commande.component';
-import { AddCommandeComponent } from './add-commande/add-commande.component';
+import { WellcomeComponent } from './components/wellcome/wellcome.component';
+import { ListeCommandeComponent } from './components/liste-commande/liste-commande.component';
+import { AddCommandeComponent } from './components/add-commande/add-commande.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
