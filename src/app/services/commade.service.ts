@@ -1,3 +1,4 @@
+import { _DELETE_COMMAND } from './../graphql/Mutation';
 import { _CREATE_COMMAND } from '../graphql/Mutation';
 import { Apollo } from 'apollo-angular';
 import { Injectable } from '@angular/core';
@@ -19,11 +20,18 @@ export class CommadeService {
    }
 
     addCommande(commande: Commande){
-    // const newCommande: Commande = { id: parseInt(this.id), name: this.name, description: this.description, price: parseInt(this.price)}
    return  this.apollo.mutate({
       mutation: _CREATE_COMMAND,
       variables:{
         newCommande: commande
+      }
+    })
+    }
+    removeCommande(idCommande: number){
+   return  this.apollo.mutate({
+      mutation: _DELETE_COMMAND,
+      variables:{
+        id: idCommande
       }
     })
     }

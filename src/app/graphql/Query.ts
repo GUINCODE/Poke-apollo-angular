@@ -12,6 +12,7 @@ export const   _GET_ENTREPRISES = gql`
 export const   _GET_COMMANDES = gql`
   query {
     commandes {
+      id
       numCommande
       libelle
       montantTotal

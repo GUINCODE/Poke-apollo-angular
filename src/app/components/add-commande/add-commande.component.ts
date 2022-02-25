@@ -6,6 +6,7 @@ import { CommadeService } from "../../services/commade.service";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from '@angular/forms';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+
 @Component({
   selector: "app-add-commande",
   templateUrl: "./add-commande.component.html",
@@ -16,6 +17,7 @@ export class AddCommandeComponent implements OnInit {
     loading: boolean = true;
     isSaved:any;
 
+
    _commande : Commande = {
      id: 0,
      libelle: "",
@@ -25,17 +27,18 @@ export class AddCommandeComponent implements OnInit {
    }
 
      private querySubscription!: Subscription;
-  constructor(private commandeService: CommadeService, private entrepriseService: EntrepriseService, private notification: NzNotificationService) {}
+  constructor(private commandeService: CommadeService, private entrepriseService: EntrepriseService, private notification: NzNotificationService,
+  ) {}
 
   ngOnInit(): void {
     this.getEntreprises()
   }
 
   addCommande(commande: Commande): boolean {
+
     this.commandeService.addCommande(commande).subscribe(
       ({ data }) => {
         console.log(data);
-
         this.isSaved=data
         if (this.isSaved.saveCommande=='saved') {
           return true

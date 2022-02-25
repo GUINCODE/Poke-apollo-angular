@@ -7,28 +7,40 @@
 
       <button class="accordion-button" [ngClass]="{ 'collapsed': i != 0 }" type="button" data-bs-toggle="collapse"
         [attr.data-bs-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
-        <p>
-          <span class="mr-2 ">N°Commande: </span> <span>{{commande.numCommande}}</span> <br>
-          <span class="mr-2 ">Titre: </span> <span>{{commande.libelle}}</span> <br>
-          <span class="mr-2 ">Montant Total: </span> <span>{{commande.montantTotal}} €</span>
-        </p>
+        <div class="d-flex justify-content-around align-items-center w-100">
+          <p>
+            <span class=" ">N°Commande: </span> <span>{{commande.numCommande}}</span> <br>
+            <span class="">Titre: </span> <span>{{commande.libelle}}</span> <br>
+            <span class="">Montant Total: </span> <span>{{commande.montantTotal}} €</span>
+          </p>
+          <div class="btn-group" role="group" class="w-15 align-self-start d-flex justify-content-between">
+            <!-- <button type="button" class="btn btn-outline-warning">Modifier</button> -->
+            <i nz-icon nzType="edit" nzTheme="fill" class="btnEdit"></i>
+            <i nz-icon nzType="delete" nzTheme="fill" class="btnDelete "   (click)="showDeleteConfirm(commande.id)"></i>
+            <!-- <button type="button" class="btn btn-outline-danger">Delete</button> -->
+          </div>
+        </div>
+
       </button>
     </h2>
     <div [id]="'collapse'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
-      [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
+      [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample" >
       <div class="accordion-body">
-        <span>Entrepise: </span> {{commande.entreprise.name}} <br>
+      <nz-divider nzText="Infos Etreprise"></nz-divider>
+        <span >Entrepise: </span> {{commande.entreprise.name}} <br>
         <span>Adresse: </span> {{commande.entreprise.adresse}} <br>
-
-        <span> Contact Name: {{commande.entreprise.contactName.fullName}}</span> <br>
-        <span> Email du Contact: {{commande.entreprise.contactName.email}}</span> <br>
+         <nz-divider nzText="Infos Contact Etreprise"></nz-divider>
+        <span>  Nom: {{commande.entreprise.contactName.fullName}}</span> <br>
+        <span> Email : {{commande.entreprise.contactName.email}}</span> <br>
 
         <div *ngFor="let telephone of commande.entreprise.contactName.telephones ;let indexOfelement=index;">
           Telephone {{indexOfelement+1}}: {{telephone.telephoneNumber}}
         </div>
 
 
-        <span *ngIf="commande.ficheInterventions.length > 0" class="text-info">Liste des Fiches d'interventions</span>
+        <span *ngIf="commande.ficheInterventions.length > 0" >
+          <nz-divider nzText="Fiches d'interventions"></nz-divider>
+        </span>
 
         <small class="text-muted" *ngIf="commande.ficheInterventions.length == 0">Aucune Fiche d'intervention pour cette
           commande</small>
@@ -51,7 +63,9 @@
           </tbody>
         </table>
         <hr>
-        <span *ngIf="commande.commandePersonnels.length > 0" class="text-warning">Personnel(s) ayant droits</span>
+        <span *ngIf="commande.commandePersonnels.length > 0" >
+          <nz-divider nzText=" Personnel(s) ayant droits"></nz-divider>
+        </span>
         <small class="text-muted" *ngIf="commande.commandePersonnels.length == 0">Aucun utilisateur n'est affecté à ce
           perimetre</small>
         <table class="table table-striped" *ngIf="commande.commandePersonnels.length > 0">

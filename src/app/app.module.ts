@@ -14,8 +14,11 @@ import { fr_FR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NzDragService } from 'ng-zorro-antd/core/services';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 registerLocaleData(fr);
 
@@ -35,8 +38,10 @@ registerLocaleData(fr);
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    NzNotificationModule
-
+    NzNotificationModule,
+    NzDividerModule,
+    NzIconModule,
+    NzModalModule
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]
