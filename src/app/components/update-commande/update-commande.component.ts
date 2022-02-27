@@ -92,8 +92,8 @@ export class UpdateCommandeComponent implements OnInit {
       if (!isNotSuccess) {
         // form.resetForm()
         setTimeout(() => {
-           this.router.navigate(['/']);
-        }, 1000);
+           this.router.navigate(['/liste-commande']);
+        }, 2000);
         this.createNotificationSucces('success')
       } else {
            this.createNotificationError('error')
