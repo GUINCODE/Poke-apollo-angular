@@ -1,0 +1,38 @@
+
+<div class=" ContentFOrm ">
+  <div class="formulaireDiv ">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+      <div class="mb-3 col-12">
+        <label for="Libelle" class="form-label">Libelle</label>
+        <input type="text" class="form-control" id="Libelle" name="Libelle" [(ngModel)]="_cmd.libelle" required>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="montantTotal" class="form-label">Montant Total</label>
+        <div class="d-flex align-items-center justify-content-evenly">
+          <input type="number" class="form-control" id="montantTotal" name="montantTotal"
+            [(ngModel)]="_cmd.montantTotal" required>
+          <span class="">€</span>
+        </div>
+      </div>
+      <div class="mb-3 col-8">
+        <label for="numCommande" class="form-label">Numéro commande</label>
+        <input type="text" class="form-control" id="numCommande" name="numCommande" [(ngModel)]="_cmd.numCommande"
+          required>
+      </div>
+      <div class="mb-3 col-12">
+        <label for="entreprise" class="form-label">Entreprise</label>
+        <select class="form-select"  id="entreprise" name="entreprise"
+          [(ngModel)]="_cmd.entrepriseId" required>
+          <option [ngValue]=0 disabled >Select Entreprise</option>
+          <option *ngFor="let entreprise of _entreprises"
+          [ngValue]="entreprise.id"
+          [selected]="_cmd.entrepriseId===entreprise.id">{{entreprise.name}}</option>
+        </select>
+      </div>
+
+      <button class="btn btn-outline-primary  mb-3" type="submit"
+        [disabled]="f.form.invalid || _cmd.entrepriseId == 0">Update</button>
+    </form>
+  </div>
+</div>

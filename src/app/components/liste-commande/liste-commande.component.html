@@ -15,7 +15,7 @@
           </p>
           <div class="btn-group" role="group" class="w-15 align-self-start d-flex justify-content-between">
             <!-- <button type="button" class="btn btn-outline-warning">Modifier</button> -->
-            <i nz-icon nzType="edit" nzTheme="fill" class="btnEdit"></i>
+            <i nz-icon nzType="edit" nzTheme="fill" class="btnEdit" (click)="goUpdatePage(commande.id)"></i>
             <i nz-icon nzType="delete" nzTheme="fill" class="btnDelete "   (click)="showDeleteConfirm(commande.id)"></i>
             <!-- <button type="button" class="btn btn-outline-danger">Delete</button> -->
           </div>

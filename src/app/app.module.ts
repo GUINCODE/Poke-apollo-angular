@@ -19,6 +19,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { UpdateCommandeComponent } from './components/update-commande/update-commande.component';
+
 
 registerLocaleData(fr);
 
@@ -29,7 +31,9 @@ registerLocaleData(fr);
     AppComponent,
     ListeCommandeComponent,
     AddCommandeComponent,
-    WellcomeComponent
+    WellcomeComponent,
+    UpdateCommandeComponent,
+
   ],
   imports: [
     BrowserModule,

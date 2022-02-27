@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Commande } from './../../types/commandeType';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { CommadeService } from '../../services/commade.service';
@@ -17,7 +18,11 @@ export class ListeCommandeComponent implements OnInit, OnDestroy {
 
 
   private querySubscription!: Subscription;
-  constructor(private commandeService: CommadeService,   private modal: NzModalService) {}
+  constructor(
+    private commandeService: CommadeService,
+      private modal: NzModalService,
+      private router: Router
+      ) {}
 
   ngOnInit() {
      this.getCommandes()
@@ -65,6 +70,10 @@ export class ListeCommandeComponent implements OnInit, OnDestroy {
       nzCancelText: 'Annuler',
       nzOnCancel: () => console.log('Cancel')
     });
+  }
+
+   goUpdatePage(id:number) {
+   this.router.navigate(['/update/'+id]);
   }
 
 }
